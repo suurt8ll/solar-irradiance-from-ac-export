@@ -14,12 +14,23 @@ parks:
   ExampleParkA:
     # System Parameters
     system:
-      # Nameplate DC Power (W)
+      # Nameplate DC Power (W) at the start of operation
       pdc0: 250000.0
       # Power temperature coefficient (%/°C). E.g., -0.0040 for -0.40%/°C.
       gamma_pmp: -0.0040
       # Nominal inverter efficiency (e.g., 0.985 for 98.5%)
       inverter_efficiency: 0.985
+      # Annual degradation rate (e.g., 0.005 for 0.5% per year)
+      degradation_rate: 0.005
+      # The date when the park started commercial operation. Format: YYYY-MM-DD
+      commissioning_date: "2020-01-01"
+
+    # PV Module Temperature Model
+    temperature_model:
+      # The pvlib temperature model collection, e.g., 'sapm', 'pvsyst'
+      model_type: 'sapm'
+      # The specific parameter set within the model type
+      model_name: 'open_rack_glass_polymer'
 
     # Location and Orientation
     location:
@@ -41,6 +52,11 @@ parks:
       pdc0: 180000.0
       gamma_pmp: -0.0038
       inverter_efficiency: 0.980
+      degradation_rate: 0.0045
+      commissioning_date: "2015-01-01"
+    temperature_model:
+      model_type: 'pvsyst'
+      model_name: 'open_rack_glass_glass'
     location:
       latitude: 34.0522
       longitude: -118.2437
