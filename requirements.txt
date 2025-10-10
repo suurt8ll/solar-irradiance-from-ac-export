@@ -2,3 +2,7 @@ python-dotenv
 PyYAML
 pandas
 plotly
+pvlib
+numpy
+tqdm
+ipython
