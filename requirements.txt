@@ -6,3 +6,5 @@ pvlib
 numpy
 tqdm
 ipython
+statsmodels
+scikit-learn
