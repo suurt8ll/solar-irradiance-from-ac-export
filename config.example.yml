@@ -55,24 +55,28 @@ parks:
     # AC Export Limit in kilowatts (kW)
     export_limit_kw: 220.0
 
+    # (Optional) Known DC Capacity Adjustments
+    # Use this section to define periods where the system's DC capacity was known
+    # to be different from the standard degraded nameplate capacity (pdc0). This is
+    # useful for modeling periods with known issues (e.g., inverter outages, string
+    # disconnections) or system upgrades/downgrades.
+    # The model will apply the adjustment with the latest 'start_date' that is
+    # before or on the current timestamp being processed.
+    dc_capacity_adjustments:
+      # Example 1: A 15% reduction in capacity for a specific period due to a
+      #            temporary inverter issue.
+      - start_date: "2021-06-01"
+        end_date: "2021-07-15"
+        adjustment_type: "percentage" # Can be "percentage" or "absolute_w"
+        value: -0.15 # Represents a 15% reduction from the degraded capacity
+
+      # Example 2: A permanent 20 kW DC capacity upgrade was installed.
+      #            Omitting 'end_date' means the adjustment applies indefinitely
+      #            from the start_date onwards.
+      - start_date: "2022-03-01"
+        adjustment_type: "absolute_w"
+        value: 20000.0 # Represents a 20 kW increase in capacity
+
   # --- Park 2: Example Solar Park 2 (Optional) ---
   ExampleParkB:
-    system:
-      pdc0: 180000.0
-      gamma_pmp: -0.0038
-      inverter_efficiency: 0.980
-      degradation_rate: 0.0045
-      commissioning_date: "2015-01-01"
-    temperature_model:
-      model_type: 'pvsyst'
-      model_name: 'open_rack_glass_glass'
-    location:
-      latitude: 34.0522
-      longitude: -118.2437
-      albedo: 0.25
-    mounting:
-      surface_tilt: 25
-      surface_azimuth: 180
-      axis_azimuth: 90.0
-      gcr: 0.40
-    export_limit_kw: 150.0
+    # See the park 1 example for options.
