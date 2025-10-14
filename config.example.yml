@@ -67,7 +67,7 @@ parks:
       #            temporary inverter issue.
       - start_date: "2021-06-01"
         end_date: "2021-07-15"
-        adjustment_type: "percentage" # Can be "percentage" or "absolute_w"
+        adjustment_type: "percentage"
         value: -0.15 # Represents a 15% reduction from the degraded capacity
 
       # Example 2: A permanent 20 kW DC capacity upgrade was installed.
@@ -76,6 +76,13 @@ parks:
       - start_date: "2022-03-01"
         adjustment_type: "absolute_w"
         value: 20000.0 # Represents a 20 kW increase in capacity
+      # Example 3: A period where data is known to be unreliable (e.g., SCADA
+      #            system maintenance). These timestamps will be excluded from
+      #            the analysis by setting their effective capacity to NaN.
+      - start_date: "2023-01-10"
+        end_date: "2023-01-12"
+        adjustment_type: "exclude" # Can be "percentage", "absolute_w", or "exclude"
+        # The 'value' key is ignored for the 'exclude' type.
 
   # --- Park 2: Example Solar Park 2 (Optional) ---
   ExampleParkB:
