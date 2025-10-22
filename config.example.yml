@@ -20,6 +20,9 @@ parks:
       gamma_pmp: -0.0040
       # Nominal inverter efficiency (e.g., 0.985 for 98.5%)
       inverter_efficiency: 0.985
+      # DC derate factor. A catch-all for unmodeled DC losses like soiling,
+      # wiring, module mismatch, etc. E.g., 0.97 for a 3% total derate.
+      dc_derate_factor: 0.97
       # Annual degradation rate (e.g., 0.005 for 0.5% per year)
       degradation_rate: 0.005
       # The date when the park started commercial operation. Format: YYYY-MM-DD
